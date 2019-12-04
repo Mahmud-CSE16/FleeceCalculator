@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:paddingVertical="4dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="3">
+        <TextView
+            android:id="@+id/base"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Base :"
+            android:textSize="18sp"
+            android:textColor="#000"/>
+        <TextView
+            android:id="@+id/kk"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="KK"
+            android:textSize="18sp"
+            android:textColor="#000"/>
+        <TextView
+            android:id="@+id/kk_100"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="100-kk"
+            android:textSize="18sp"
+            android:textColor="#000"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="3">
+        <TextView
+            android:id="@+id/binder"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Binder :"
+            android:textSize="18sp"
+            android:textColor="#000"/>
+        <TextView
+            android:id="@+id/cc"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="cc"
+            android:textSize="18sp"
+            android:textColor="#000"/>
+        <TextView
+            android:id="@+id/cc_100"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="100-cc"
+            android:textSize="18sp"
+            android:textColor="#000"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="3">
+        <TextView
+            android:id="@+id/loop"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Loop :"
+            android:textSize="18sp"
+            android:textColor="#000"/>
+        <TextView
+            android:id="@+id/ccc"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="ccc"
+            android:textSize="18sp"
+            android:textColor="#000"/>
+        <TextView
+            android:id="@+id/ccc_100"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="100-ccc"
+            android:textSize="18sp"
+            android:textColor="#000"/>
+    </LinearLayout>
+
+</LinearLayout>

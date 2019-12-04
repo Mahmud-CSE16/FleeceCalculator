@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">FleeceCalculator</string>
+    <string-array name="colors">
+        <item>Light</item>
+        <item>Medium</item>
+        <item>Dark</item>
+    </string-array>
+</resources>

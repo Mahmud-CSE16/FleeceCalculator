@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    android:gravity="center"
+    tools:context=".InputActivity">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/editText_GSM"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:hint="Required GSM"
+                android:inputType="numberDecimal"
+                />
+            <EditText
+                android:id="@+id/editText_Cotton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:hint="Required Cotton%"
+                android:inputType="numberDecimal"/>
+            <EditText
+                android:id="@+id/editText_Polyester"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:hint="Required Polyester%"
+                android:inputType="numberDecimal"/>
+            <EditText
+                android:id="@+id/editText_Amount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:hint="Required Final Amount"
+                android:inputType="numberDecimal"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_margin="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fabric Color:"
+                    android:textColor="#000"
+                    android:textSize="20sp"
+                    />
+
+                <Spinner
+                    android:id="@+id/spinner_Color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"/>
+            </LinearLayout>
+
+            <Button
+                android:onClick="calculate"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="Calculate"/>
+        </LinearLayout>
+</LinearLayout>
