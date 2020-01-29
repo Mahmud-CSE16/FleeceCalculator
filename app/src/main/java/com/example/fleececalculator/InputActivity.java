@@ -25,8 +25,16 @@ public class InputActivity extends AppCompatActivity {
 
         ViewById();
 
+
+
         Bundle bundle = getIntent().getExtras();
         a1 = bundle.getInt("a1");
+
+        if(a1==1){
+            setTitle("Spun Yarn Calculation");
+        }else {
+            setTitle("Filament Yarn Calculation");
+        }
 
         ArrayAdapter adapter = ArrayAdapter.createFromResource(this,R.array.colors, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

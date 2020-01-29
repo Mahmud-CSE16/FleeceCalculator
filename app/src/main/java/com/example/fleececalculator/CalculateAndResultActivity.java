@@ -13,7 +13,7 @@ import java.util.List;
 
 public class CalculateAndResultActivity extends AppCompatActivity {
 
-    TextView amount_of_base_needed,amount_of_binder_needed,amount_of_loop_needed,base_count,base_stitch_length,
+    TextView amount_of_base_needed,amount_of_binder_needed,amount_of_loop_needed,amount_of_base_needed_with_waste_percentage,amount_of_binder_needed_with_waste_percentage,amount_of_loop_needed_with_waste_percentage,base_count,base_stitch_length,
              binder_count,binder_stitch_length,loop_count,loop_stitch_length;
 
     ListView listView;
@@ -127,12 +127,13 @@ public class CalculateAndResultActivity extends AppCompatActivity {
         if(a9==1) {
             Toast.makeText(this,"GSM data not found",Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, InputActivity.class);
+            intent.putExtra("a1",a1);
             startActivity(intent);
             finish();
         }else{
-            a12=a3/a6 ;
-            a13=a4/a7 ;
-            a14=a5/a8 ;
+            a12=a6/a3 ;
+            a13=a7/a4 ;
+            a14=a8/a5 ;
 
             a15= a12+a13+a14 ;
 
@@ -140,37 +141,183 @@ public class CalculateAndResultActivity extends AppCompatActivity {
             a17=a13/a15*100 ;
             a18=a14/a15*100 ;
 
-            amount_of_base_needed.setText("Ammount of base needed = "+(Math.floor(a11*a16*100)/100));
-            amount_of_binder_needed.setText("Ammount of binder needed = "+(Math.floor(a11*a17*100)/100));
-            amount_of_loop_needed.setText("Ammount of loop needed = "+(Math.floor(a11*a18*100)/100));
+            double abn = (a11*a16)/100;
+            double abin = (a11*a17)/100;
+            double aln = (a11*a18)/100;
 
-            base_count.setText("Base Count = "+Math.floor(a3*100)/100);
-            binder_count.setText("Binder Count = "+Math.floor(a4*100)/100);
-            loop_count.setText("Loop Count = "+Math.floor(a5*100)/100);
+            amount_of_base_needed.setText("Ammount of base needed = "+(Math.floor(abn*100)/100)+" kg");
+            amount_of_binder_needed.setText("Ammount of binder needed = "+(Math.floor(abin*100)/100)+" kg");
+            amount_of_loop_needed.setText("Ammount of loop needed = "+(Math.floor(aln*100)/100)+" kg");
 
-            base_stitch_length.setText("Base stitch length = "+ Math.floor(a6*100)/100);
-            binder_stitch_length.setText("Binder stitch length = "+ Math.floor(a7*100)/100);
-            loop_stitch_length.setText("Loop stitch length = "+ Math.floor(a8*100)/100);
+            if(color.equals("Light")){
+                amount_of_base_needed_with_waste_percentage.setText("Ammount of base needed = "+(Math.floor((abn+abn*.08)*100)/100)+" kg");
+                amount_of_binder_needed_with_waste_percentage.setText("Ammount of binder needed = "+(Math.floor((abin+abin*.08)*100)/100)+" kg");
+                amount_of_loop_needed_with_waste_percentage.setText("Ammount of loop needed = "+(Math.floor((aln+aln*.08)*100)/100)+" kg");
+            }else if(color.equals("Medium")){
+                amount_of_base_needed_with_waste_percentage.setText("Ammount of base needed = "+(Math.floor((abn+abn*.12)*100)/100)+" kg");
+                amount_of_binder_needed_with_waste_percentage.setText("Ammount of binder needed = "+(Math.floor((abin+abin*.12)*100)/100)+" kg");
+                amount_of_loop_needed_with_waste_percentage.setText("Ammount of loop needed = "+(Math.floor((aln+aln*.12)*100)/100)+" kg");
+            }else if(color.equals("Dark")){
+                amount_of_base_needed_with_waste_percentage.setText("Ammount of base needed = "+(Math.floor((abn+abn*.16)*100)/100)+" kg");
+                amount_of_binder_needed_with_waste_percentage.setText("Ammount of binder needed = "+(Math.floor((abin+abin*.16)*100)/100)+" kg");
+                amount_of_loop_needed_with_waste_percentage.setText("Ammount of loop needed = "+(Math.floor((aln+aln*.16)*100)/100)+" kg");
+            }
+
+            base_count.setText("Base Count = "+Math.floor(a3*100)/100+" S");
+            binder_count.setText("Binder Count = "+Math.floor(a4*100)/100+" S");
+            loop_count.setText("Loop Count = "+Math.floor(a5*100)/100+" S");
+
+            base_stitch_length.setText("Base stitch length = "+ Math.floor(a6*100)/100+" mm");
+            binder_stitch_length.setText("Binder stitch length = "+ Math.floor(a7*100)/100+" mm");
+            loop_stitch_length.setText("Loop stitch length = "+ Math.floor(a8*100)/100+" mm");
 
             List<Double> kks = new ArrayList<>();
             List<Double> ccs = new ArrayList<>();
             List<Double> cccs = new ArrayList<>();
 
 
-            for(kk=1;kk<=100;kk++)
+//            for(kk=1;kk<=100;kk++)
+//            {
+//                for(cc=1;cc<=100;cc++)
+//                {
+//                    for(ccc=1;ccc<=100;ccc++)
+//                    {
+//                        xxx= (a16*kk/100+a17*cc/100+a18*ccc/100);
+//
+//                        if ( xxx == a10)
+//                        {
+//                            kks.add(kk);
+//                            ccs.add(cc);
+//                            cccs.add(ccc);
+//
+//                        }
+//                    }
+//
+//                }
+//
+//            }
+
+
+            int y =10;
+            /*1 */
+
+            for(kk=1;kk<=100;kk=kk+y)
             {
-                for(cc=1;cc<=100;cc++)
+                for(cc=1;cc<=100;cc=cc+y)
                 {
-                    for(ccc=1;ccc<=100;ccc++)
+                    for(ccc=1;ccc<=100;ccc=ccc+y)
                     {
                         xxx= (a16*kk/100+a17*cc/100+a18*ccc/100);
 
-                        if ( xxx == a10)
+                        if ( xxx > a10-.5 && xxx< a10+.5)
                         {
                             kks.add(kk);
                             ccs.add(cc);
                             cccs.add(ccc);
+                        }
+                    }
 
+                }
+
+            }
+            /*2 */
+
+            for(kk=1;kk<=100;kk=kk+y)
+            {
+                for(ccc=1;ccc<=100;ccc=ccc+y)
+                {
+                    for(cc=1;cc<=100;cc=cc+y)
+                    {
+                        xxx= (a16*kk/100+a17*cc/100+a18*ccc/100);
+
+                        if ( xxx > a10-.5 && xxx< a10+.5)
+                        {
+                            kks.add(kk);
+                            ccs.add(cc);
+                            cccs.add(ccc);
+                        }
+                    }
+
+                }
+
+            }
+            /*3 */
+            for(cc=1;cc<=100;cc=cc+y)
+            {
+                for(kk=1;kk<=100;kk=kk+y)
+                {
+                    for(ccc=1;ccc<=100;ccc=ccc+y)
+                    {
+                        xxx= (a16*kk/100+a17*cc/100+a18*ccc/100);
+
+                        if ( xxx > a10-.5 && xxx< a10+.5)
+                        {
+                            kks.add(kk);
+                            ccs.add(cc);
+                            cccs.add(ccc);
+                        }
+                    }
+
+                }
+
+            }
+
+            /*4 */
+            for(cc=1;cc<=100;cc=cc+y)
+            {
+                for(ccc=1;ccc<=100;ccc=ccc+y)
+                {
+                    for(kk=1;kk<=100;kk=kk+y)
+                    {
+                        xxx= (a16*kk/100+a17*cc/100+a18*ccc/100);
+
+                        if ( xxx > a10-.5 && xxx< a10+.5)
+                        {
+                            kks.add(kk);
+                            ccs.add(cc);
+                            cccs.add(ccc);
+                        }
+                    }
+
+                }
+
+            }
+
+            /*5 */
+            for(ccc=1;ccc<=100;ccc=ccc+y)
+            {
+                for(kk=1;kk<=100;kk=kk+y)
+                {
+                    for(cc=1;cc<=100;cc=cc+y)
+                    {
+                        xxx= (a16*kk/100+a17*cc/100+a18*ccc/100);
+
+                        if ( xxx > a10-.5 && xxx< a10+.5)
+                        {
+                            kks.add(kk);
+                            ccs.add(cc);
+                            cccs.add(ccc);
+                        }
+                    }
+
+                }
+
+            }
+            /*6 */
+
+            for(ccc=1;ccc<=100;ccc=ccc+y)
+            {
+                for(cc=1;cc<=100;cc=cc+y)
+                {
+                    for(kk=1;kk<=100;kk=kk+y)
+                    {
+                        xxx= (a16*kk/100+a17*cc/100+a18*ccc/100);
+
+                        if ( xxx > a10-.5 && xxx< a10+.5)
+                        {
+                            kks.add(kk);
+                            ccs.add(cc);
+                            cccs.add(ccc);
                         }
                     }
 
@@ -191,10 +338,17 @@ public class CalculateAndResultActivity extends AppCompatActivity {
         amount_of_base_needed = findViewById(R.id.amount_of_base_needed);
         amount_of_binder_needed = findViewById(R.id.amount_of_binder_needed);
         amount_of_loop_needed = findViewById(R.id.amount_of_loop_needed);
+
+        amount_of_base_needed_with_waste_percentage = findViewById(R.id.amount_of_base_needed_with_waste_percentage);
+        amount_of_binder_needed_with_waste_percentage = findViewById(R.id.amount_of_binder_needed_with_waste_percentage);
+        amount_of_loop_needed_with_waste_percentage = findViewById(R.id.amount_of_loop_needed_with_waste_percentage);
+
         base_count = findViewById(R.id.base_count);
         base_stitch_length= findViewById(R.id.base_stitch_length);
+
         binder_count = findViewById(R.id.binder_count);
         binder_stitch_length = findViewById(R.id.binder_stitch_length);
+
         loop_count = findViewById(R.id.loop_count);
         loop_stitch_length = findViewById(R.id.loop_stitch_length);
 

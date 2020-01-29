@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FleeceCalculator</string>
+    <string name="app_name">Fleece Calculator</string>
     <string-array name="colors">
         <item>Light</item>
         <item>Medium</item>
